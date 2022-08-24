@@ -25,7 +25,9 @@ public class MainActivity extends AppCompatActivity {
         Repository repo = new Repository(getApplication());
         Product product = new Product(1, "unicycle", 10.0);
         repo.insert(product);
-        Part part = new Part(1, "unicycle", 10, 1);
+        Product product2 = new Product(2,"bicycle", 15.0);
+        repo.insert(product2);
+        Part part = new Part(1, "Wheel", 3, 1);
         repo.insert(part);
     }
 }
