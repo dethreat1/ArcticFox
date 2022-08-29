@@ -34,14 +34,17 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         private ProductViewHolder(View itemView){
             super(itemView);
             productItemView=itemView.findViewById(R.id.textView2);
-            itemView.setOnClickListener(view -> {
-                int position=getAdapterPosition();
-                final Product current=mProducts.get(position);
-                Intent intent=new Intent(context,PartList.class);
-                intent.putExtra("id", current.getProductID());
-                intent.putExtra("name", current.getProductName());
-                intent.putExtra("price", current.getProductPrice());
-                context.startActivity(intent);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int position=getAdapterPosition();
+                    final Product current=mProducts.get(position);
+                    Intent intent=new Intent(context,PartList.class);
+                    intent.putExtra("id", current.getProductID());
+                    intent.putExtra("name", current.getProductName());
+                    intent.putExtra("price", current.getProductPrice());
+                    context.startActivity(intent);
+                }
             });
         }
     }
