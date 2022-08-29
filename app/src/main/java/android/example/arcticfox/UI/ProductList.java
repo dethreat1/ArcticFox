@@ -1,13 +1,20 @@
 package android.example.arcticfox.UI;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
+import android.example.arcticfox.Database.Repository;
+import android.example.arcticfox.Entity.Product;
 import android.view.Menu;
 import android.example.arcticfox.R;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+
+import java.util.List;
 
 public class ProductList extends AppCompatActivity {
 
@@ -16,6 +23,13 @@ public class ProductList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_list);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        RecyclerView recyclerView = findViewById(R.id.recyclerview);
+        Repository repo = new Repository(getApplication());
+        List<Product> products = repo.getAllProducts();
+        final ProductAdapter adapter = new ProductAdapter(this);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        adapter.setProducts(products);
     }
 
     public boolean onCreateOptionsMenu (Menu menu) {
