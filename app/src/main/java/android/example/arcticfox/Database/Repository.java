@@ -44,6 +44,17 @@ public class Repository {
             e.printStackTrace();
         }
     }
+
+    public void update(Product product){
+        databaseExecutor.execute(()->{
+            mProductDAO.update(product);
+        });
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
     public void delete(Product product){
 
         databaseExecutor.execute(()-> mProductDAO.delete(product));
@@ -72,8 +83,17 @@ public class Repository {
             e.printStackTrace();
         }
     }
-    public void delete(Part part){
 
+    public void update(Part part){
+        databaseExecutor.execute(()-> mPartDAO.update(part));
+        try {
+            Thread.sleep(1000);
+        }catch (InterruptedException e){
+            e.printStackTrace();
+        }
+    }
+
+    public void delete(Part part){
         databaseExecutor.execute(()-> mPartDAO.delete(part));
         try {
             Thread.sleep(1000);
