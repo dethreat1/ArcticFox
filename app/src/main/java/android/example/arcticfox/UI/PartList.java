@@ -2,6 +2,7 @@ package android.example.arcticfox.UI;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.example.arcticfox.Database.Repository;
 import android.example.arcticfox.Entity.Product;
 import android.example.arcticfox.R;
@@ -42,5 +43,9 @@ public class PartList extends AppCompatActivity {
             product = new Product(productID, editName.getText().toString(), Double.parseDouble(editPrice.getText().toString()));
             repository.update(product);
         }
+    }
+    public void detailScreen(View view){
+        Intent intent = new Intent(PartList.this, PartDetail.class);
+        startActivity(intent);
     }
 }
